@@ -10,7 +10,7 @@ function Button({
 }: ButtonProps) {
   // asosiy classlar
   const baseClasses =
-    'inline-flex items-center justify-center rounded-[14px] font-medium transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center rounded-[14px] font-medium transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer';
   // primaty yoki secondaryligiga qarab classlar
   let variantClasses = '';
 
@@ -20,6 +20,8 @@ function Button({
   } else if (variant === 'secondary') {
     variantClasses =
       'border border-blue-600 text-blue-600 hover:bg-blue-50 bg-white';
+  } else if (variant === '') {
+    variantClasses = '';
   }
 
   let sizeClasses = '';
