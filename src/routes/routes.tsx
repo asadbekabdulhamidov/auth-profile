@@ -15,9 +15,9 @@ const routes = createBrowserRouter([
     path: '/',
     element: <MainLayout />,
     children: [
-      { path: '/', element: <Home /> },
+      { index: true, element: <Home /> },
       {
-        path: '/profile',
+        path: 'profile',
         element: <Profile />,
       },
     ],
@@ -27,11 +27,11 @@ const routes = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       {
-        path: '/login',
+        path: 'login',
         element: <Login />,
       },
       {
-        path: '/register',
+        path: 'register',
         element: <Register />,
       },
     ],
