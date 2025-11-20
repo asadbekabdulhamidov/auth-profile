@@ -3,7 +3,7 @@ import Button from './Button';
 
 function Navbar() {
   return (
-    <nav className="py-3">
+    <nav className="py-3 bg-[##E5E7EB] shadow-sm">
       <div className="w-full max-w-[1232px] px-2 mx-auto flex justify-between">
         {/* logo */}
         <Link className="flex items-center" to="/">
@@ -14,12 +14,16 @@ function Navbar() {
         </Link>
 
         <div className="flex gap-4">
-          <Button fullWidth={false} size="lg" variant="secondary">
-            Login
-          </Button>
-          <Button fullWidth={false} size="lg" variant="primary">
-            Register
-          </Button>
+          <Link to={'/login'}>
+            <Button fullWidth={false} size="lg" variant="secondary">
+              Login
+            </Button>
+          </Link>
+          <Link to={'/register'}>
+            <Button fullWidth={false} size="lg" variant="primary">
+              Register
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>

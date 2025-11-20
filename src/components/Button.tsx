@@ -10,7 +10,7 @@ function Button({
 }: ButtonProps) {
   // asosiy classlar
   const baseClasses =
-    'inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center rounded-[14px] font-medium transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed';
   // primaty yoki secondaryligiga qarab classlar
   let variantClasses = '';
 

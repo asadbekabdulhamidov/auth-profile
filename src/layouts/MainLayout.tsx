@@ -6,8 +6,13 @@ import Navbar from '../components/Navbar';
 function MainLayout() {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer>Footer</footer>
     </>
   );
 }

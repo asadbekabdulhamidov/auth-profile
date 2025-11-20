@@ -1,5 +1,12 @@
+import { Fragment } from 'react/jsx-runtime';
+import Hero from '../components/Hero';
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Fragment>
+      <Hero />
+    </Fragment>
+  );
 };
 
 export default Home;
