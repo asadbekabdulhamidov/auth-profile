@@ -21,7 +21,7 @@ function Hero() {
         </p>
 
         <div className="flex flex-col md:flex-row mt-8 items-center justify-center gap-4 ">
-          <Link to={''}>
+          <Link to={'/register'}>
             <Button
               className="cursor-pointer "
               size="lg"

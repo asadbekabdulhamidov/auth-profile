@@ -15,12 +15,22 @@ function Navbar() {
 
         <div className="flex gap-4">
           <Link to={'/login'}>
-            <Button fullWidth={false} size="lg" variant="secondary">
+            <Button
+              className="w-[107px] cursor-pointer"
+              fullWidth={false}
+              size="lg"
+              variant="secondary"
+            >
               Login
             </Button>
           </Link>
           <Link to={'/register'}>
-            <Button fullWidth={false} size="lg" variant="primary">
+            <Button
+              className="w-[107px] cursor-pointer"
+              fullWidth={false}
+              size="lg"
+              variant="primary"
+            >
               Register
             </Button>
           </Link>
