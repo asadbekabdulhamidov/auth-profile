@@ -1,5 +1,5 @@
 function App() {
-  return <div className="underline">App</div>;
+  return null;
 }
 
 export default App;
