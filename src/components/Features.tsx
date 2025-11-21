@@ -2,7 +2,7 @@ import { features } from '../types/Feature.types';
 
 function Features() {
   return (
-    <section className="mt-52 mb-40">
+    <section className="mt-40 mb-40">
       <div className="w-full max-w-[1232px] px-2 mx-auto flex items-center justify-between gap-4 ">
         {features.map((item) => {
           return (
