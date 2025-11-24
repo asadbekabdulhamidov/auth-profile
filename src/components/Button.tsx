@@ -21,7 +21,7 @@ function Button({
     variantClasses =
       'border border-blue-600 text-blue-600 hover:bg-blue-50 bg-white';
   } else if (variant === '') {
-    variantClasses = '';
+    variantClasses = 'text-black';
   }
 
   let sizeClasses = '';
