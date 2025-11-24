@@ -23,8 +23,8 @@ function Input({
         <img src={icon} alt="" />
         <input
           className="border-none outline-none text-[#99A1AF]"
-          type="email"
-          placeholder="Email address"
+          type={type}
+          placeholder={placeholder}
           {...register(name)}
         />
       </div>
