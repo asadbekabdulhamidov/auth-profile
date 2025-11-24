@@ -13,7 +13,7 @@ function MainLayout() {
       <main>
         <Outlet />
       </main>
-      <footer>
+      <footer className="shadow-slate-600">
         <Footer />
       </footer>
     </>

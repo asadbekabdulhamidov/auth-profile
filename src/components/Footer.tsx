@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <div className="w-full max-w-[1232px] px-2 mx-auto py-8 mt-20">
+    <div className="w-full max-w-[1232px] px-2 mx-auto py-8 mt-20 ">
       <Link
         className="text-center block text-[#4A5565] "
         target="_blank"
