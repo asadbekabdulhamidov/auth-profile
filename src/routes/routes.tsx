@@ -9,6 +9,7 @@ import NotFound from '../pages/NotFound';
 // layouts
 import MainLayout from '../layouts/MainLayout';
 import AuthLayout from '../layouts/AuthLayout';
+import ProfileLayout from '../layouts/ProfileLayout';
 
 //protectedRoute
 import ProtectedRoute from '../components/ProtectedRoute';
@@ -17,15 +18,19 @@ const routes = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    children: [{ index: true, element: <Home /> }],
+  },
+  {
+    path: '/profile',
+    element: (
+      <ProtectedRoute>
+        <ProfileLayout />
+      </ProtectedRoute>
+    ),
     children: [
-      { index: true, element: <Home /> },
       {
-        path: 'profile',
-        element: (
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        ),
+        index: true,
+        element: <Profile />,
       },
     ],
   },
