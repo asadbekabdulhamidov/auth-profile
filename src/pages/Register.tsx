@@ -1,6 +1,7 @@
 // rrd
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProfileImage from '../components/ProfileImage';
+
 //image
 import EmailIcon from '../assets/email-icon.svg';
 import PasswordIcon from '../assets/password-icon.svg';
@@ -12,6 +13,10 @@ import Input from '../components/Input';
 
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+
+// firebase
+import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { auth, googleProvider } from '../firebase/firebase.config';
 
 const schema = yup.object({
   username: yup
@@ -35,6 +40,7 @@ type RegisterFormValues = {
 import { useForm } from 'react-hook-form';
 import Button from '../components/Button';
 function Register() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -43,8 +49,30 @@ function Register() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (values: RegisterFormValues) => {
-    console.log('Formdan kelgan malumot:', values);
+  const handleGoogleRegister = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log('Google register user:', result.user);
+      navigate('/profile');
+    } catch (error: any) {
+      console.log('RegisterWithGoogle error:', error.message);
+    }
+  };
+
+  const onSubmit = async (values: RegisterFormValues) => {
+    // console.log('Formdan kelgan malumot:', values);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+
+      console.log('Firebase user:', userCredential.user);
+      navigate('/profile');
+    } catch (error: any) {
+      console.log('Regisrer error', error.message);
+    }
   };
 
   return (
@@ -102,6 +130,7 @@ function Register() {
           size="lg"
           fullWidth={true}
           variant=""
+          onClick={handleGoogleRegister}
         >
           <img src={GoogleIcon} alt="" />
           Register with Google

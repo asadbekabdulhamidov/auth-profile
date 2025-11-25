@@ -1,5 +1,6 @@
 // rrd
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ProfileImage from '../components/ProfileImage';
 //image
 import EmailIcon from '../assets/email-icon.svg';
@@ -11,6 +12,11 @@ import Input from '../components/Input';
 
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+
+//firebase
+
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { auth, googleProvider } from '../firebase/firebase.config';
 
 const schema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -29,6 +35,7 @@ type LoginFormValues = {
 import { useForm } from 'react-hook-form';
 import Button from '../components/Button';
 function Login() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -37,8 +44,32 @@ function Login() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (values: LoginFormValues) => {
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+
+      console.log('google user', result.user);
+      navigate('/profile');
+    } catch (error: any) {
+      console.log('Google login error:', error.message);
+    }
+  };
+
+  const onSubmit = async (values: LoginFormValues) => {
     console.log('Formdan kelgan malumot:', values);
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+
+      navigate('/profile');
+
+      console.log('Login user:', userCredential.user);
+    } catch (err: any) {
+      console.log('Login error:', err.message);
+    }
   };
 
   return (
@@ -89,6 +120,7 @@ function Login() {
           size="lg"
           fullWidth={true}
           variant=""
+          onClick={handleGoogleLogin}
         >
           <img src={GoogleIcon} alt="" />
           Login with Google
