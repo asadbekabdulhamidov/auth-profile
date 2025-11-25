@@ -10,6 +10,9 @@ import NotFound from '../pages/NotFound';
 import MainLayout from '../layouts/MainLayout';
 import AuthLayout from '../layouts/AuthLayout';
 
+//protectedRoute
+import ProtectedRoute from '../components/ProtectedRoute';
+
 const routes = createBrowserRouter([
   {
     path: '/',
@@ -18,7 +21,11 @@ const routes = createBrowserRouter([
       { index: true, element: <Home /> },
       {
         path: 'profile',
-        element: <Profile />,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

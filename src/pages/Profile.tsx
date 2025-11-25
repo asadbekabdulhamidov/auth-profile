@@ -1,5 +1,3 @@
-import { auth } from '../firebase/firebase.config';
-
 import { useAuth } from '../context/AuthContext';
 
 function Profile() {

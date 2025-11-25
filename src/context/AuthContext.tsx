@@ -8,7 +8,6 @@ import {
 
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
-import firebase from 'firebase/compat/app';
 
 // 1 context ichida saqlanadigan qiymat turi.
 type AuthContextType = {
