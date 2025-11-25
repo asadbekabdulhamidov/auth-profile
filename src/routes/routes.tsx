@@ -13,6 +13,8 @@ import ProfileLayout from '../layouts/ProfileLayout';
 
 //protectedRoute
 import ProtectedRoute from '../components/ProtectedRoute';
+// guestroute
+import GuestRoute from '../components/GuestRoute';
 
 const routes = createBrowserRouter([
   {
@@ -40,11 +42,19 @@ const routes = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />,
+        element: (
+          <GuestRoute>
+            <Login />
+          </GuestRoute>
+        ),
       },
       {
         path: 'register',
-        element: <Register />,
+        element: (
+          <GuestRoute>
+            <Register />
+          </GuestRoute>
+        ),
       },
     ],
   },

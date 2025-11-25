@@ -6,19 +6,21 @@ import {
   ReactNode,
 } from 'react';
 
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged, User, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 
 // 1 context ichida saqlanadigan qiymat turi.
 type AuthContextType = {
   user: User | null;
   loading: boolean;
+  logOut: () => Promise<void>;
 };
 
 //contetni default qiymati
 const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
+  logOut: async () => {},
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -34,8 +36,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => unsubscribe();
   }, []);
 
+  const logOut = async () => {
+    await signOut(auth);
+    setUser(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, logOut }}>
       {children}
     </AuthContext.Provider>
   );
