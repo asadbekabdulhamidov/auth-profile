@@ -11,7 +11,6 @@ import LogOutIcon from '../assets/logout.svg';
 
 function ProfileSidebar() {
   const { user, logOut } = useAuth();
-  console.log(user);
 
   const email = user?.email || 'No email';
   const name = user?.displayName || 'No name';
@@ -34,7 +33,7 @@ function ProfileSidebar() {
           />
         ) : (
           <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center text-2xl font-semibold mb-3">
-            {name.charAt(0).toUpperCase()}
+            {name[0].toUpperCase()}
           </div>
         )}
 
